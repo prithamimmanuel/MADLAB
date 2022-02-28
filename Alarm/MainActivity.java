@@ -1,13 +1,27 @@
-package com.example.sms;
+package com.example.alarm;
 
-import android.app.TimePickerDialog; import android.media.Ringtone; import android.media.RingtoneManager; import android.os.Build;
-import   android.os.Bundle; import android.os.Handler; import   android.os.Looper; import android.provider.Settings; import android.util.Log;
-import   android.view.View; import android.widget.Button; import android.widget.TextClock; import android.widget.TextView; import android.widget.TimePicker;
-
+import android.app.TimePickerDialog; 
+import android.media.Ringtone; 
+import android.media.RingtoneManager; 
+import android.os.Build;
+import android.os.Bundle; 
+import android.os.Handler; 
+import android.os.Looper; 
+import android.provider.Settings; 
+import android.util.Log;
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.TextClock; 
+import android.widget.TextView; 
+import android.widget.TimePicker;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity; import java.util.Calendar;
-import java.util.Timer; import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicInteger; public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity; 
+import java.util.Calendar;
+import java.util.Timer; 
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger; 
+
+public class MainActivity extends AppCompatActivity {
     TimePicker alarmtime;
     TextClock currtime;
     TextView t;
@@ -25,12 +39,10 @@ import java.util.concurrent.atomic.AtomicInteger; public class MainActivity exte
         final AtomicInteger value = new AtomicInteger(0);
         final AtomicInteger stop = new AtomicInteger(0);
         final Timer timer = new Timer();
-        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),RingtoneManager.getDefault Uri(RingtoneManager.TYPE_ALARM));
+        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
         setAlarm.setOnClickListener(new View.OnClickListener() {
- 	@Override
-
-
-            alarmtime.setVisibility(View.VISIBLE);
+ 	    public void onClick(View view) {
+        alarmtime.setVisibility(View.VISIBLE);
  	stop.getAndSet(0);
  	timer.scheduleAtFixedRate(new TimerTask() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
@@ -58,10 +70,12 @@ import java.util.concurrent.atomic.AtomicInteger; public class MainActivity exte
                     }
                 }
             },0,1000); //you want the delay to be zero because the task should be immediate and you want to check each second
-        }
+        };
     });
-cancel.setOnClickListener(new View.OnClickListener() { @Override
-        public void onClick(View view) { stop.getAndSet(1);
+    cancel.setOnClickListener(new View.OnClickListener() { 
+        @Override 
+        public void onClick(View view) { 
+            stop.getAndSet(1);
         }
     });
 
@@ -102,4 +116,3 @@ cancel.setOnClickListener(new View.OnClickListener() { @Override
         return alarm_time;
     }
 }
-
