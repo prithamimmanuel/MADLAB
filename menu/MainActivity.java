@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
  	}
  	else if(item.equals("Python"))
  	{
- 	disp.setText("Python is an interpreted high-level
-general-purpose programming language.\n\nIts design philosophy emphasizes code readability with its use of significant indentation.\n\nPython 3.9.0 is the current version released in October 2020 ");
+ 	disp.setText("Python is an interpreted high-level general-purpose programming language.\n\nIts design philosophy emphasizes code readability with its use of significant indentation.\n\nPython 3.9.0 is the current version released in October 2020 ");
  	}
  	}
 
